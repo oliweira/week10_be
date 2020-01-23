@@ -4,7 +4,12 @@ const Dev = require('./models/Dev.js');
 
 const routes = Router();
 
-routes.post('/devs', async(request, response) => {
+// routes.post('/devs', (request, response) => {
+//     console.log(request.body);
+//     return response.json({message: "Ola Povo!"});
+// });
+
+routes.post('/devs', async (request, response) => {
     const { github_username, techs } = request.body;
 
     const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
@@ -13,7 +18,7 @@ routes.post('/devs', async(request, response) => {
 
     const techsArray = techs.split(',').map(tech => tech.trim());
 
-    const dev = await Dev.create({
+    const develop = await Dev.create({
         github_username,
         name,
         avatar_url,
@@ -21,7 +26,7 @@ routes.post('/devs', async(request, response) => {
         techs: techsArray,
     })
 
-    return response.json(dev);
+    return response.json(develop);
 });
 
 module.exports = routes;
