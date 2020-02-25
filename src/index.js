@@ -1,3 +1,4 @@
+//Gerencias as rotas
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
@@ -24,4 +25,5 @@ app.use(routes);
 
 // MongoDB (Não-relacional)
 
+// o listem serve para executar a aplicação no browser
 app.listen(3333);
